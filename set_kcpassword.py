@@ -6,6 +6,7 @@
  
 import sys
 import os
+import getpass
  
 def kcpassword(passwd):
     # The magic 11 bytes - these are just repeated
@@ -29,7 +30,7 @@ def kcpassword(passwd):
     return "".join(passwd)
  
 if __name__ == "__main__":
-    passwd = input("Enter your password:")
+    passwd = getpass.getpass("Enter your password:")
     fd = os.open('/etc/kcpassword', os.O_WRONLY | os.O_CREAT, 0o600)
     file = os.fdopen(fd, 'w')
     file.write(passwd)
